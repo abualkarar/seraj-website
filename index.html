@@ -72,14 +72,7 @@
         }
 
         .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo-icon {
-            width: 45px; height: 45px;
-            background: linear-gradient(135deg, var(--orange), var(--orange-light));
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.5rem;
-            box-shadow: 0 8px 20px rgba(217, 79, 26, 0.3);
-        }
+        .nav-logo-img { height: 50px; width: auto; border-radius: 8px; }
         .nav-logo-text { font-size: 1.2rem; font-weight: 800; color: var(--text); }
         .nav-logo-text span { color: var(--orange); }
 
@@ -120,7 +113,7 @@
                 var(--bg);
         }
 
-        .hero-content { max-width: 700px; }
+        .hero-content { max-width: 650px; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 10px;
             background: rgba(217, 79, 26, 0.1); border: 1px solid rgba(217, 79, 26, 0.2);
@@ -130,7 +123,7 @@
         .hero-badge i { animation: pulse 2s infinite; }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
+            font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900;
             line-height: 1.1; margin-bottom: 25px; color: var(--text);
         }
         .hero h1 span { color: var(--orange); }
@@ -158,23 +151,20 @@
         .btn-secondary:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); }
 
         .hero-visual {
-            position: relative; width: 40%; display: flex; justify-content: center;
+            position: relative; width: 45%; display: flex; justify-content: center;
         }
-        .visual-box {
-            width: 100%; max-width: 450px; aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: blob 10s infinite alternate;
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
+        .visual-img-container {
+            width: 100%; max-width: 550px; position: relative;
+            animation: float 6s infinite ease-in-out;
         }
-        .visual-box i { font-size: 10rem; color: rgba(255,255,255,0.2); }
-        .visual-card {
-            position: absolute; bottom: 20px; right: -20px;
-            background: var(--white); color: #000; padding: 20px;
-            border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            display: flex; align-items: center; gap: 15px;
-            animation: float 4s infinite ease-in-out;
+        .visual-img {
+            width: 100%; height: auto; border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .visual-glow {
+            position: absolute; inset: -20px; background: var(--orange);
+            filter: blur(80px); opacity: 0.2; z-index: -1; border-radius: 50%;
         }
 
         /* ===== STATS ===== */
@@ -286,10 +276,6 @@
 
         /* ===== ANIMATIONS ===== */
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        @keyframes blob {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
-        }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
@@ -299,7 +285,7 @@
         @media (max-width: 992px) {
             .hero { flex-direction: column; text-align: center; padding-top: 150px; }
             .hero-content { margin-bottom: 60px; }
-            .hero-visual { width: 80%; }
+            .hero-visual { width: 90%; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
@@ -316,7 +302,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <a href="#" class="nav-logo">
-            <div class="nav-logo-icon"><i class="fas fa-fire-extinguisher"></i></div>
+            <img src="seraj-logo.png" alt="شعار السراج" class="nav-logo-img">
             <div class="nav-logo-text">السراج <span>للتجهيزات</span></div>
         </a>
         
@@ -350,15 +336,9 @@
             </div>
         </div>
         <div class="hero-visual">
-            <div class="visual-box">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="visual-card">
-                <div class="nav-logo-icon" style="width:40px; height:40px; font-size:1rem;"><i class="fas fa-check"></i></div>
-                <div>
-                    <div style="font-weight:900; font-size:1.1rem;">جودة مضمونة</div>
-                    <div style="font-size:0.8rem; opacity:0.7;">معايير عالمية ISO</div>
-                </div>
+            <div class="visual-img-container">
+                <div class="visual-glow"></div>
+                <img src="seraj-logo.png" alt="السراج للتجهيزات الصناعية" class="visual-img">
             </div>
         </div>
     </section>
@@ -468,7 +448,7 @@
         <div class="footer-grid">
             <div class="footer-about">
                 <a href="#" class="footer-logo">
-                    <div class="nav-logo-icon"><i class="fas fa-fire-extinguisher"></i></div>
+                    <img src="seraj-logo.png" alt="شعار السراج" class="nav-logo-img">
                     <div class="nav-logo-text">السراج <span>للتجهيزات</span></div>
                 </a>
                 <p>الشركة الرائدة في اليمن لتوفير حلول الأمن الصناعي وأنظمة مكافحة الحريق، الوكيل الحصري لشركة Asenware.</p>
